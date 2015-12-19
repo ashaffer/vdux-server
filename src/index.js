@@ -8,7 +8,7 @@ import virtex from 'virtex'
  * vdux-server
  */
 
-function server (store, app, ready) {
+function server (store, app, ready = () => true) {
   return new Promise((resolve, reject) => {
     const {create} = virtex(store.dispatch)
 

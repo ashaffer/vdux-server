@@ -16,7 +16,7 @@ vdux-server takes three arguments and returns a promise that resolves to the ren
   `vdux(store, app, ready)`
   * `store` - The redux store that processes your actions. Should probably include [virtex-string](https://github.com/ashaffer/virtex-string).
   * `app` - Your app. Accepts state, returns a vdom tree.
-  * `ready` - Accepts state and returns a bool indicating whether or not the app is loaded. When this returns true, the promise returned by vdux-server will be resolved with the rendered html of the app.
+  * `ready` - Optional. Accepts state and returns a bool indicating whether or not the app is loaded. When this returns true, the promise returned by vdux-server will be resolved with the rendered html of the app.
 
 ## Example - Sync
 
@@ -37,7 +37,7 @@ app.use(function *(next) {
   const initialState = {url: this.url}
   const store = configStore(reducer, initialState)
 
-  const html = yield vdux(store, app, () => true)
+  const html = yield vdux(store, app)
   const state = store.getState()
   this.body = render('page.ejs', {html, state})
 })
