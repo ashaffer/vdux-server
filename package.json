@@ -2,7 +2,7 @@
   "name": "vdux-server",
   "description": "Server-side rendering for vdux",
   "repository": "git://github.com/vdux/vdux-server.git",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
