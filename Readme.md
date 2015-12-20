@@ -5,6 +5,8 @@
 
 Server-side rendering for vdux
 
+*Note: The examples in the examples folder are still a work in progress - they may or may not be working to varying degrees at the moment.*
+
 ## Installation
 
     $ npm install vdux-server
