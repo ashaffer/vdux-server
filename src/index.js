@@ -17,14 +17,27 @@ function server (store, app, ready = () => true) {
 
     function render () {
       const state = store.getState()
-      const html = create(app(state))
+      const tree = app(state)
+      const html = create(tree)
 
       if (ready(state)) {
-        resolve(html)
+        resolve({
+          tree: removeThunks(tree),
+          html
+        })
         unsub()
       }
     }
   })
+}
+
+function removeThunks (vnode) {
+  if (typeof vnode.type !== 'string') {
+    return removeThunks(vnode.vnode)
+  }
+
+  vnode.children = vnode.children.map(removeThunks)
+  return vnode
 }
 
 /**

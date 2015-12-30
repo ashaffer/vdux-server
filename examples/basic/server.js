@@ -34,12 +34,13 @@ app.use(route.get('/:counter?', function *(counter = 0) {
   counter = Number(counter)
 
   const store = configStore(string)({counter})
-  const html = yield vdux(store, state => <App counter={state.counter} />)
+  const {html, tree} = yield vdux(store, state => <App counter={state.counter} />)
   const state = store.getState()
 
   this.body = yield render('page.ejs', {
     html,
-    state
+    state,
+    tree
   })
 }))
 

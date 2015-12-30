@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   vdux(
     store,
     state => <App counter={state.counter} />,
-    document.body
+    document.body,
+    __initialTree__
   )
 })
